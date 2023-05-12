@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>LEDs.html
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charset="utf-8"/>
+        <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2534/2534928.png">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
+            *{
+                margin:0;
+                padding:0;
+                color:red;
+                text-align:center;
+                border:none;
+            }
+            body{
+                overflow-y:hidden;
+            }
+            button{
+                height:100vh;
+                width:100vw;
+                font-family: 'Cinzel', serif;
+                font-size:16pt;
+                -webkit-text-stroke: 1.5px white;
+                background-image: url("https://c.tenor.com/Px_PMiYXFIMAAAAC/black-swirl.gif");
+                background-position:center;
+                background-repeat:no-repeat;
+                background-size:cover;
+                animation: escrita linear;
+            }
+        </style>
+    </head>
+    <body id="bod">
+        <button id="text" onclick="clicou()">
+            <h1 id="te">
+                <b id = "es">CLIQUE PARA COMEÇAR...
+                </b>
+            </h1>
+        </button>
+        <script>
+            function clicou(){
+                te.style.transition = "2s";
+                te.style.display = "none";
+            }
+            var led = document.querySelector("body");
+            var interval = null;
+            led.onclick = function() {
+                let cores = ["black","#1C1C1C","#363636","#4F4F4F","#696969","#808080","#A9A9A9","#C0C0C0","#D3D3D3","#DCDCDC",
+                             "#8B0000","#B22222","red","#FF4500","#87CEFA","#87CEEB","#00CED1","#40E0D0","#00FA9A","#32CD32",
+                             "#228B22","#008000","#006400","#00FF00","#7CFC00","#ADFF2F","#9370DB","#7B68EE","#8A2BE2","#4B0082",
+                             "#4B0082","#9400D3","#9932CC","#A020F0","#8B008B","#FF00FF","#EE82EE","#C71585","#DC143C","#FFFF00",
+                             "#FFD700","#FFA500","#FF8C00","#FF4500","#FFC0CB","#7B68EE","#4169E1","#191970","#00008B","#87CEEB",
+                             "#DDA0DD","#DA70D6","#EE82EE","#FF00FF","#8B008B","#9400D3","#4B0082","#98FB98","#C71585","#FF1493"];
+                interval = setInterval(()=>{
+                    text.style.background=cores[parseInt(Math.random()*cores.length)];
+                    text.style.transition = "2s";
+                }
+                                       ,1500);
+            }
+            led.onmouseleave = function(){
+                clearInterval(interval);
+                text.style.background = "grey";
+            }
+        </script>
+    </body>
+</html>
